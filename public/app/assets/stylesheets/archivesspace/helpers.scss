@@ -73,6 +73,10 @@
   column-gap: 1rem;
 }
 
+.gap-x-4 {
+  column-gap: 1.5rem;
+}
+
 .rounded-bottom {
   border-bottom-left-radius: var(--bootstrap-rounded-border-radius);
   border-bottom-right-radius: var(--bootstrap-rounded-border-radius);

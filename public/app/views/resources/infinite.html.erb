@@ -20,8 +20,68 @@
   content_waypoint_size = 20
   sidebar_waypoint_size = 200
   num_records = @ordered_records.count
+  num_waypoints_on_page_load = 2
   sidebar_position = AppConfig[:pui_collection_org_sidebar_position]
 %>
+
+<style>
+#switch + div > .toggle {
+	position: relative;
+	width: 3rem;
+  margin-bottom: 0;
+	display: inline-block;
+	text-indent: -9999px;
+	background: #006e99;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+#switch + div > .toggle::after {
+	content: '';
+	position: absolute;
+	top: .25rem;
+	left: .25rem;
+	width: 1rem;
+	height: 1rem;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.2s;
+}
+
+#switch:checked + div > .toggle::after {
+	left: calc(100% - .25rem);
+	transform: translateX(-100%);
+}
+</style>
+
+<% if num_records > content_waypoint_size * num_waypoints_on_page_load %>
+  <% start_percent = ((content_waypoint_size * num_waypoints_on_page_load).to_f / num_records.to_f * 100).round %>
+  <section class="row mb-4 mt-3 alert alert-primary align-items-center gap-x-4">
+    <p class="mb-0">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+      This collection contains a large number of records (<%= num_records %>).
+    </p>
+    <p class="mb-0 px-2 py-1 d-flex align-items-center gap-2 bg-primary rounded">
+      <span class="text-white">Showing</span>
+      <span class="badge badge-light" data-showing-percent><%= start_percent %>%</span>
+    </p>
+    <div class="d-flex align-items-center gap-2">
+      <p class="mb-0 font-weight-bold">Load records</p>
+      <div
+        class="d-flex align-items-center gap-2"
+        style="padding: .2rem .5rem; border: 1px solid currentColor; border-radius: 1rem;"
+      >
+        <input type="checkbox" class="visually-hidden order-1" id="switch" />
+        <div class="order-1">
+          <label class="toggle" for="switch">Toggle</label>
+        </div>
+        <label class="mb-0 on-scroll order-0" for="switch">On scroll</label>
+        <label class="mb-0 all-at-once order-1" for="switch">All at once</label>
+      </div>
+    </div>
+  </section>
+<% end %>
+
 <div class="row overflow-hidden">
   <div
     id="sidebar"
