@@ -355,6 +355,8 @@ en:
       related_accessions:
         accessions: Accession Records
         deaccessions: Deaccession Records
+    collection_organization:
+      load_records_alert: This collection contains a large number of records
 
   top_container:
     _singular: Container

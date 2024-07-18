@@ -122,12 +122,12 @@ $indent-width: 20px;
   padding-bottom: 550px;
 }
 
-@keyframes yellow-fade {
+@keyframes bg-yellow-to-white {
   from {
-    background: yellow;
+    background: $highlight;
   }
   to {
-    background: transparent;
+    background: white;
   }
 }
 
@@ -141,8 +141,9 @@ $indent-width: 20px;
 }
 
 .item-highlight {
-  animation: yellow-fade 2s;
+  animation: bg-yellow-to-white 1s;
 }
+
 .item-fadeout {
   animation: fadeout 0.5s;
 }

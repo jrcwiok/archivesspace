@@ -56,27 +56,34 @@
 
 <% if num_records > content_waypoint_size * num_waypoints_on_page_load %>
   <% start_percent = ((content_waypoint_size * num_waypoints_on_page_load).to_f / num_records.to_f * 100).round %>
-  <section class="row mb-4 mt-3 alert alert-primary align-items-center gap-x-4">
+  <section
+    class="row mb-4 mt-3 alert alert-primary align-items-center gap-x-8 gap-y-3"
+    data-records-alert
+  >
     <p class="mb-0">
       <i class="fa fa-info-circle" aria-hidden="true"></i>
-      This collection contains a large number of records (<%= num_records %>).
+      <%= "#{t('resource.collection_organization.load_records_alert')} (#{num_records})" %>.
     </p>
-    <p class="mb-0 px-2 py-1 d-flex align-items-center gap-2 bg-primary rounded">
-      <span class="text-white">Showing</span>
-      <span class="badge badge-light" data-showing-percent><%= start_percent %>%</span>
-    </p>
-    <div class="d-flex align-items-center gap-2">
-      <p class="mb-0 font-weight-bold">Load records</p>
-      <div
-        class="d-flex align-items-center gap-2"
-        style="padding: .2rem .5rem; border: 1px solid currentColor; border-radius: 1rem;"
-      >
-        <input type="checkbox" class="visually-hidden order-1" id="switch" />
-        <div class="order-1">
-          <label class="toggle" for="switch">Toggle</label>
+
+    <div class="d-flex gap-x-8">
+      <p class="align-self-center mb-0 px-2 py-1 d-flex align-items-center gap-2 bg-primary rounded">
+        <span class="text-white">Showing</span>
+        <span class="badge badge-light" data-records-percent><%= start_percent %>%</span>
+      </p>
+
+      <div class="d-flex align-items-center gap-2">
+        <p class="mb-0 font-weight-bold">Load records</p>
+        <div
+          class="d-flex align-items-center gap-2"
+          style="padding: .2rem .5rem; border: 1px solid currentColor; border-radius: 1rem;"
+        >
+          <input type="checkbox" class="visually-hidden order-1" id="switch" />
+          <div class="order-1">
+            <label class="toggle" for="switch">Toggle</label>
+          </div>
+          <label class="mb-0 on-scroll order-0" for="switch">On scroll</label>
+          <label class="mb-0 all-at-once order-1" for="switch">All at once</label>
         </div>
-        <label class="mb-0 on-scroll order-0" for="switch">On scroll</label>
-        <label class="mb-0 all-at-once order-1" for="switch">All at once</label>
       </div>
     </div>
   </section>

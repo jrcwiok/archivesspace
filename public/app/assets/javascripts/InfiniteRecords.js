@@ -232,6 +232,8 @@
         waypointEl.classList.add('populated');
 
         this.clearWaypointFromDatasets(wpNum);
+
+        this.updateShowingPercentage();
       });
     }
 
@@ -312,6 +314,33 @@
           this.waypointObserver.unobserve(record);
         }
       });
+    }
+
+    updateShowingPercentage(shouldCloseModal = false) {
+      const alert = document.querySelector('[data-records-alert]');
+      const percentLabel = document.querySelector('[data-records-percent]');
+      const numPresentRecords = this.container.querySelectorAll(
+        '.infinite-record-record'
+      ).length;
+      const percentLoaded = Math.round(
+        (numPresentRecords / this.NUM_TOTAL_RECORDS) * 100
+      );
+
+      percentLabel.classList.add('item-highlight');
+      percentLabel.textContent = `${percentLoaded}%`; // NEEDS i18n
+      percentLabel.onanimationend = () => {
+        percentLabel.classList.remove('item-highlight');
+      };
+
+      if (numPresentRecords === this.NUM_TOTAL_RECORDS) {
+        alert.classList.add('item-fadeout');
+        alert.onanimationend = () => {
+          alert.style.opacity = 0;
+        };
+        alert.setAttribute('disabled', true);
+
+        if (shouldCloseModal) this.modal.toggle();
+      }
     }
 
     /**
