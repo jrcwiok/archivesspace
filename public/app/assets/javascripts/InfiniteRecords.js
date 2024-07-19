@@ -30,6 +30,10 @@
         document.querySelector('[data-loading-modal]')
       );
 
+      this.loadAllRecordsInput = document.querySelector(
+        '[data-load-all-records]'
+      );
+
       this.waypointObserver = new IntersectionObserver(
         (entries, observer) => {
           this.waypointScrollHandler(entries, observer);
@@ -50,6 +54,12 @@
 
       this.container.addEventListener('scrollend', () => {
         this.isOkToObserve = true;
+      });
+
+      this.loadAllRecordsInput.addEventListener('input', () => {
+        if (this.loadAllRecordsInput.checked) {
+          this.loadAllRecordsInput.disabled = true;
+        }
       });
 
       this.initRecords(window.location.hash);
