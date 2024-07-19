@@ -123,37 +123,37 @@ $indent-width: 20px;
 }
 
 .load-records__toggle-container {
-  padding: .2rem .5rem;
+  padding: 0.2rem 0.5rem;
   border: 1px solid currentcolor;
   border-radius: 1rem;
 }
 
 .load-records__label-toggle {
-	position: relative;
-	width: 2.75rem;
+  position: relative;
+  width: 2.75rem;
   margin-bottom: 0;
-	display: inline-block;
-	text-indent: -9999px;
-	background: #006e99;
-	border-radius: 100px;
-	cursor: pointer;
+  display: inline-block;
+  text-indent: -9999px;
+  background: #006e99;
+  border-radius: 100px;
+  cursor: pointer;
 }
 
 .load-records__label-toggle::after {
-	content: '';
-	position: absolute;
-	top: .25rem;
-	left: .25rem;
-	width: 1rem;
-	height: 1rem;
-	background: #fff;
-	border-radius: 90px;
-	transition: 0.2s;
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.2s;
 }
 
 .load-records__input:checked + div > .load-records__label-toggle::after {
-	left: calc(100% - .25rem);
-	transform: translateX(-100%);
+  left: calc(100% - 0.25rem);
+  transform: translateX(-100%);
 }
 
 @keyframes bg-yellow-to-white {
