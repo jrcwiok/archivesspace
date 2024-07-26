@@ -21,10 +21,11 @@
   sidebar_waypoint_size = 200
   num_records = @ordered_records.count
   num_waypoints_on_page_load = 2
+  show_large_resource_alert = num_records > content_waypoint_size * num_waypoints_on_page_load
   sidebar_position = AppConfig[:pui_collection_org_sidebar_position]
 %>
 
-<% if num_records > content_waypoint_size * num_waypoints_on_page_load %>
+<% if show_large_resource_alert %>
   <section
     class="row mb-4 mt-3 alert alert-primary align-items-center gap-x-8 gap-y-3"
     data-records-alert
@@ -140,8 +141,9 @@ const treeWaypointSize = '<%= sidebar_waypoint_size %>';
 const identifier_separator = '<%= I18n.t("resource.identifier_separator") %>';
 const date_type_bulk = '<%= I18n.t("date_type_bulk.bulk") %>';
 const appUrlPrefix = '<%= AppConfig[:public_proxy_url] %>';
+const workerPath = '<%= asset_path('infinite_worker.js') %>';
 
-const infiniteRecords = new InfiniteRecords(resourceUri, appUrlPrefix);
+const infiniteRecords = new InfiniteRecords(resourceUri, appUrlPrefix, workerPath);
 const infiniteTree = new InfiniteTree(
   treeWaypointSize,
   appUrlPrefix,
