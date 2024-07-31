@@ -41,7 +41,7 @@ $indent-width: 20px;
   dl.administrative_notes {
     > div {
       width: 100%;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       padding-right: 1rem;
       padding-left: 1rem;
       display: grid;
@@ -63,7 +63,6 @@ $indent-width: 20px;
       grid-column: 2 / 3;
     }
   }
-
 }
 
 // ANW-425 and after
@@ -175,4 +174,4 @@ $indent-width: 20px;
 
 .administrative_notes dd p:last-child {
   margin-bottom: 0;
-} 
+}
