@@ -61,13 +61,15 @@
         this.isOkToObserve = true;
       });
 
-      this.loadAllRecordsInput?.addEventListener('input', () => {
-        if (this.loadAllRecordsInput.checked) {
-          this.loadAllRecordsInput.disabled = true;
+      if (this.loadAllRecordsInput) {
+        this.loadAllRecordsInput.addEventListener('input', () => {
+          if (this.loadAllRecordsInput.checked) {
+            this.loadAllRecordsInput.disabled = true;
 
-          this.populateAllWaypoints();
-        }
-      });
+            this.populateAllWaypoints();
+          }
+        });
+      }
 
       this.initRecords(window.location.hash);
     }
